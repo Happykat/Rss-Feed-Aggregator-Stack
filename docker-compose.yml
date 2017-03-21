@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  db:
+    image: mysql
+    container_name: rss-db
+    ports:
+      - 3307:3306
+    volumes:
+      - "./.persistence:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+
+  server:
+    build: Server
+    container_name: rss-server
+    ports:
+      - 4567:4567
+    links:
+      - db:mysqldb
