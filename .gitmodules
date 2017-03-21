@@ -1,0 +1,9 @@
+[submodule "RSSServer"]
+        path = Rss-Feed-Aggregator-Server 
+        url = https://github.com/Happykat/Rss-Feed-Aggregator-Server
+        branch = master
+[submodule "RSSWebClient"]
+        path = Rss-Feed-Aggregator-Web 
+        url = https://github.com/Happykat/Rss-Feed-Aggregator-Web
+        branch = master
+
