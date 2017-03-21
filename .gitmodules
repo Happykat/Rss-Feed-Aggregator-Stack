@@ -1,9 +1,6 @@
 [submodule "Server"]
-        path = Server 
-        url = https://github.com/Happykat/Rss-Feed-Aggregator-Server
-        branch = master
+	path = Server
+	url = git@github.com:Happykat/Rss-Feed-Aggregator-Server.git
 [submodule "WebClient"]
-        path = WebClient 
-        url = https://github.com/Happykat/Rss-Feed-Aggregator-Web
-        branch = master
-
+	path = WebClient
+	url = git@github.com:Happykat/Rss-Feed-Aggregator-Web.git
