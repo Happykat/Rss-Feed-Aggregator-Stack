@@ -1,20 +1,41 @@
 version: '2'
-
 services:
   db:
-    image: mysql
-    container_name: rss-db
-    ports:
-      - 3307:3306
+    image: mongo:3.0.4
     volumes:
-      - "./.persistence:/var/lib/mysql"
-    environment:
-      MYSQL_ROOT_PASSWORD: "root"
-
-  server:
-    build: Server
-    container_name: rss-server
+      - "/data/db"
     ports:
-      - 4567:4567
-    links:
-      - db:mysqldb
+      - "27017:27017"
+    network_mode: "host"
+    restart: "always"
+  seed-db:
+    build: ./.db
+    network_mode: "host"
+    depends_on:
+      - db
+  urss:
+    build: Server
+    ports:
+     - "4242:4242"
+    depends_on:
+     - db
+    network_mode: "host"
+    restart: "always"
+  front-db:
+    environment:
+      - PASSWORD=123soleil
+    image: mrvautin/adminmongo:latest
+    ports:
+      - "1234:1234"
+    depends_on:
+      - db
+    network_mode: "host"
+    restart: "always"
+  urss-web:
+    build: WebClient
+    ports:
+      - "8000:8000"
+    depends_on:
+      - urss
+    network_mode: "host"
+    restart: "always"
