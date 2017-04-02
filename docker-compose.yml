@@ -13,7 +13,7 @@ services:
     network_mode: "host"
     depends_on:
       - db
-  urss:
+  rss:
     build: Server
     ports:
      - "4242:4242"
@@ -31,11 +31,11 @@ services:
       - db
     network_mode: "host"
     restart: "always"
-  urss-web:
+  rss-web:
     build: WebClient
     ports:
       - "8000:8000"
     depends_on:
-      - urss
+      - rss
     network_mode: "host"
     restart: "always"
